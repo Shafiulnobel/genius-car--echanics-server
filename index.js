@@ -4,7 +4,7 @@ const ObjectId=require('mongodb').ObjectId;
 const cors=require('cors')
 require('dotenv').config()
 const app = express();
-const port =5000;
+const port =process.env.PORT||4000;
 
 
 //middleware
@@ -18,7 +18,7 @@ const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology:
 async function run(){
     try{
        await client.connect();
-      
+       console.log('connected')
 
        //database create
        const database=client.db('carMechanic');
